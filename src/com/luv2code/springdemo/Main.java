@@ -7,11 +7,12 @@ public class Main {
 
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
         Coach theCoach = context.getBean("tennisCoach",Coach.class);
-        //call a method on the bean
-        System.out.println(theCoach.getDailyWorkout());
-
-        //call method to get the daily fortune
-        System.out.println(theCoach.getDailyFortune());
+        Coach alphaCoach = context.getBean("tennisCoach",Coach.class);
+        boolean result = (theCoach==alphaCoach);
+        //printout the results
+        System.out.println("\nPointing to the same object: "+result);
+        System.out.println("\nMemory location for theCoach:"+ theCoach);
+        System.out.println("\nMemory location for alphaCoach: "+alphaCoach+"\n");
 
         //close the context
         context.close();
